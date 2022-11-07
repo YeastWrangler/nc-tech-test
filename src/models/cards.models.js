@@ -2,17 +2,17 @@ const fs = require('fs/promises')
 
 function fetchCards(){
 
-cardFile = fs.readFile(`/Users/yeastwrangler/Northercoders/projects/New_Emac/nc-tech-test/src/data/cards.json`, "utf-8").then((file) => {
-    const parsedCard = JSON.parse(file)
-    console.log(parsedCard)
+cardFile = fs.readFile(`/Users/yeastwrangler/Northercoders/projects/New_Emac/nc-tech-test/src/data/cards.json`, "utf-8").then((cards) => {
+    const parsedCards = JSON.parse(cards)
+    console.log(parsedCards)
 }).then
 templateFile = fs.readFile(`/Users/yeastwrangler/Northercoders/projects/New_Emac/nc-tech-test/src/data/templates.json`, "utf-8").then((file) => {
         const parsedTemplate = JSON.parse(file)
         console.log(parsedTemplate)
        
-}).then((parsedCard) => {
-    console.log(parsedCard)
-    cardWithUrl = parsedCard.map((card) => {
+}).then((parsedCards, parsedTemplate) => {
+    console.log(parsedTemplate)
+    cardWithUrl = parsedCards.map((card) => {
         return card.pages.map((page) => {
             if (page.title === "Front Cover") { 
                 return parsedTemplate.map((item) => {
